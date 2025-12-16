@@ -1,0 +1,8 @@
+templates:
+  - name: Sales Dashboard
+    slug: sales_dashboard
+    path: templates/sales_dashboard
+    zip: templates/sales_dashboard/sales_dashboard.zip
+    thumbnail: templates/sales_dashboard/thumbnail.png
+    category: Sales
+    is_featured: true

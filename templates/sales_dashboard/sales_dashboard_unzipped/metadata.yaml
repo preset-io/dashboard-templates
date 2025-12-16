@@ -1,0 +1,119 @@
+version: 1.0.0
+type: Dashboard
+timestamp: '2025-12-16T12:38:35.890448+00:00'
+is_template: true
+is_featured_template: true
+template_category: Sales
+template_thumbnail_url: https://raw.githubusercontent.com/preset-io/dashboard-templates/main/templates/sales_dashboard/thumbnail.png
+template_description: "Sales performance dashboard tracking revenue, deals, and product line metrics with KPI overview and exploratory analysis views"
+template_tags: []
+template_context:
+  ideal_for:
+    - "Transactional sales data"
+    - "E-commerce order data"
+    - "CRM deal/opportunity data"
+
+  required_columns:
+    - name: order_date
+      type: datetime
+      description: "When the sale/transaction occurred"
+      examples: ["order_date", "sale_date", "transaction_date", "closed_date", "created_at"]
+
+    - name: revenue
+      type: numeric
+      description: "Monetary value of the sale"
+      examples: ["revenue", "amount", "total", "price", "deal_value", "sales"]
+
+    - name: product_line
+      type: categorical
+      description: "Category or type of product sold"
+      examples: ["product_line", "category", "product_type", "segment", "product_category"]
+
+    - name: quantity
+      type: numeric
+      description: "Number of items sold"
+      examples: ["quantity", "qty", "units", "items_sold", "quantity_ordered"]
+
+    - name: deal_size
+      type: categorical
+      description: "Classification of deal (Small/Medium/Large)"
+      examples: ["deal_size", "deal_tier", "order_size", "size_category"]
+
+    - name: country
+      type: categorical
+      description: "Geographic region of the sale"
+      examples: ["country", "region", "territory", "geo", "location"]
+
+  tabs:
+    - name: "🎯 Sales Overview"
+      purpose: "High-level KPIs and primary revenue metrics for executive summary"
+      charts:
+        - chart_name: "Total Revenue"
+          viz_type: big_number
+          uses: [revenue, order_date]
+          purpose: "Single KPI showing cumulative total revenue with trend line"
+
+        - chart_name: "Total Products Sold"
+          viz_type: big_number_total
+          uses: [quantity, order_date]
+          purpose: "Single KPI showing total quantity of items sold"
+
+        - chart_name: "Quarterly Revenue"
+          viz_type: echarts_timeseries_bar
+          uses: [order_date, revenue]
+          purpose: "Revenue trends aggregated by quarter as bar chart"
+
+        - chart_name: "Products Sold By Product Line"
+          viz_type: table
+          uses: [product_line, quantity]
+          purpose: "Tabular breakdown of items sold per product category"
+
+        - chart_name: "Quarterly Revenue (By Product Line)"
+          viz_type: echarts_timeseries_bar
+          uses: [order_date, revenue, product_line]
+          purpose: "Quarterly revenue trends broken down by product category"
+
+        - chart_name: "Total Revenue By Product"
+          viz_type: echarts_timeseries_bar
+          uses: [product_line, revenue]
+          purpose: "Total revenue comparison across product categories"
+
+    - name: "🧭 Exploratory"
+      purpose: "Deeper analysis of revenue patterns, seasonality, and dimensional breakdowns"
+      charts:
+        - chart_name: "Proportion of Revenue by Product Line"
+          viz_type: pie
+          uses: [product_line, revenue]
+          purpose: "Percentage breakdown of revenue contribution by product category"
+
+        - chart_name: "Number of Deals (for each Combination)"
+          viz_type: heatmap_v2
+          uses: [product_line, deal_size]
+          purpose: "Heatmap showing deal count density across product and deal size dimensions"
+
+        - chart_name: "Seasonality of Revenue (per Product Line)"
+          viz_type: echarts_area
+          uses: [order_date, revenue, product_line]
+          purpose: "Area chart showing revenue seasonality patterns by product category"
+
+        - chart_name: "Monthly Revenue by Deal Size"
+          viz_type: horizon
+          uses: [order_date, revenue, deal_size]
+          purpose: "Compact horizon chart comparing revenue across deal size tiers over time"
+
+  filters:
+    - name: "Country"
+      type: filter_select
+      column: country
+      multi_select: true
+      purpose: "Filter all charts by geographic region"
+
+    - name: "Order Quantity"
+      type: filter_range
+      column: quantity
+      purpose: "Filter by order volume range (min/max)"
+
+    - name: "Time Range"
+      type: filter_time
+      column: order_date
+      purpose: "Filter all charts by date range"
