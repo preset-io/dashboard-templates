@@ -1,5 +1,5 @@
 database_name: examples
-sqlalchemy_uri: sqlite:////Users/alexandrusoare/.superset/examples.db?check_same_thread=false
+sqlalchemy_uri: examples://
 cache_timeout: null
 expose_in_sqllab: true
 allow_run_async: false
