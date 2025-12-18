@@ -1,0 +1,30 @@
+version: 1.0.0
+type: Dashboard
+timestamp: '2025-12-16T12:38:35.890448+00:00'
+is_template: true
+is_featured_template: true
+template_category: Sales
+template_thumbnail_url: https://raw.githubusercontent.com/preset-io/dashboard-templates/main/templates/sales_dashboard/thumbnail.png
+template_description: "Sales performance dashboard tracking revenue, deals, and product line metrics with KPI overview and exploratory analysis views"
+template_tags:
+  - sales
+  - kpi
+  - analytics
+template_context: |
+  This sales dashboard analyzes transactional data where each row is a sale. The first tab
+  shows executive KPIs: two big number cards display total revenue and total items sold,
+  both using a date column for trending. Below that, bar charts show quarterly revenue
+  patterns, with one chart breaking this down by product category, and another showing
+  total revenue by product.
+
+  The second tab digs deeper: a pie chart shows revenue proportion across product categories,
+  a heatmap crosses product category against deal size (Small/Medium/Large) to show deal
+  density, an area chart reveals seasonal revenue patterns by product, and a horizon chart
+  compares revenue across deal size tiers over time.
+
+  Three filters control the view: a multi-select for country/region, a numeric range for
+  order quantity, and a date picker for the time period. All charts respond to these filters.
+
+  The key relationships: revenue and quantity are the numeric measures, product line and
+  deal size are the categorical breakdowns, order date drives all time-based analysis,
+  and country enables geographic filtering.
