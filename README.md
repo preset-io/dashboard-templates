@@ -5,49 +5,43 @@ A collection of ready-to-use Superset/Preset dashboard templates that can be cus
 ## Repository Structure
 
 ```
-├── index.yaml              # Template registry
 ├── categories.yaml         # Available template categories
 ├── templates/
 │   └── sales_dashboard/
-│       ├── sales_dashboard.zip   # Superset import file
 │       ├── thumbnail.png         # Dashboard preview image
-│       └── metadata.yaml         # Template metadata & AI context
+│       ├── metadata.yaml         # Template metadata & AI context
+│       ├── tags.yaml             # Template tags
+│       ├── charts/               # Chart definitions (YAML)
+│       ├── dashboards/           # Dashboard definitions (YAML)
+│       ├── databases/            # Database connections (YAML)
+│       └── datasets/             # Dataset configurations (YAML)
 ```
 
 ## How to Use a Template
 
 ### 1. Browse Available Templates
 
-View the template catalog in `index.yaml` or browse the `templates/` directory.
+Browse the `templates/` directory to see available templates.
 
 Each template includes:
-- **ZIP file** - Import directly into Superset/Preset
 - **Thumbnail** - Preview of the dashboard
-- **Metadata** - Description, required columns, and AI context
+- **Metadata** - Description, tags, and AI context
+- **Charts** - Individual chart definitions in YAML
+- **Dashboards** - Dashboard layout definitions
+- **Datasets** - Dataset configurations
+- **Databases** - Database connection templates
 
 ### 2. Get Template Files
 
-**Download ZIP (for manual import):**
-```
-https://raw.githubusercontent.com/preset-io/dashboard-templates/main/templates/sales_dashboard/sales_dashboard.zip
-```
-
 **View Thumbnail:**
 ```
-https://raw.githubusercontent.com/preset-io/dashboard-templates/main/templates/sales_dashboard/thumbnail.png
+https://raw.githubusercontent.com/preset-io/dashboard-templates/master/templates/sales_dashboard/thumbnail.png
 ```
 
 **Read Metadata:**
 ```
-https://raw.githubusercontent.com/preset-io/dashboard-templates/main/templates/sales_dashboard/metadata.yaml
+https://raw.githubusercontent.com/preset-io/dashboard-templates/master/templates/sales_dashboard/metadata.yaml
 ```
-
-### 3. Import into Superset/Preset
-
-1. Download the `.zip` file for your chosen template
-2. In Superset/Preset, go to **Settings** > **Import Dashboard**
-3. Upload the ZIP file
-4. Map the dataset to your own data source
 
 ## Template Metadata Schema
 
@@ -109,7 +103,7 @@ Available template categories (see `categories.yaml`):
 
 To add a new template:
 
-1. Export your dashboard from Superset/Preset as a ZIP
-2. Create a new folder under `templates/`
-3. Add the ZIP file, thumbnail, and `metadata.yaml`
-4. Update `index.yaml` with the new template entry
+1. Create a new folder under `templates/`
+2. Add the YAML definitions for charts, dashboards, datasets, and databases
+3. Add a thumbnail image and `metadata.yaml`
+4. Add a `tags.yaml` with relevant tags
