@@ -6,7 +6,10 @@ is_featured_template: true
 template_category: Sales
 template_thumbnail_url: https://raw.githubusercontent.com/preset-io/dashboard-templates/main/templates/sales_dashboard/thumbnail.png
 template_description: "Sales performance dashboard tracking revenue, deals, and product line metrics with KPI overview and exploratory analysis views"
-template_tags: []
+template_tags:
+  - sales
+  - kpi
+  - analytics
 template_context: |
   This sales dashboard analyzes transactional data where each row is a sale. The first tab
   shows executive KPIs: two big number cards display total revenue and total items sold,
